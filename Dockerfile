@@ -30,7 +30,7 @@ RUN apt-get update && \
 RUN ln -s /usr/bin/python2.7 /usr/bin/python 
 
 # Installing Kaldi
-RUN git clone --depth 1 https://github.com/kaldi-asr/kaldi.git /opt/kaldi && \
+RUN git clone --depth 1 --config core.autocrlf=input https://github.com/kaldi-asr/kaldi.git /opt/kaldi && \
     cd /opt/kaldi && \
     cd /opt/kaldi/tools && \
     ./extras/install_mkl.sh && \
@@ -61,7 +61,7 @@ COPY a2l /a2l
 
 # Installing Audio-2-lyrics alignment package and the rest of the dependencies
 RUN cd a2l/ && \
-    git clone https://github.com/facebookresearch/demucs && \
+    git clone --config core.autocrlf=input https://github.com/facebookresearch/demucs && \
     conda env update -f environment.yml && \
     PATH_TO_YOUR_KALDI_INSTALLATION=/opt/kaldi && \
     sed -i -- 's/path-to-your-kaldi-installation/${PATH_TO_YOUR_KALDI_INSTALLATION}/g' path.sh && \
