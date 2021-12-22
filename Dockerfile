@@ -24,6 +24,8 @@ RUN apt-get update && \
         gfortran \
         patch \
         ffmpeg \
+        dos2unix \
+        nano \
 	vim && \
     rm -rf /var/lib/apt/lists/*
 
@@ -71,6 +73,3 @@ RUN cd a2l/ && \
 WORKDIR /a2l
 
 ENTRYPOINT ["/bin/bash"]
-
-
-
